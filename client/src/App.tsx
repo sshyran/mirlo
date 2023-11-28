@@ -137,7 +137,9 @@ function App() {
 
                   @media (min-width: ${bp.small}px) {
                     padding: 0rem 2rem 2rem;
-                    max-width: calc(1080px + 0rem);
+                    max-width: var(--mi-container-full);
+                    display: flex;
+                    justify-content: center;
                   }
 
                   @media screen and (max-width: 800px) {

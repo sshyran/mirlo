@@ -13,6 +13,8 @@ const ManageContainer: React.FC = () => {
           left: 0;
           overflow-x: hidden;
           padding: 0 !important;
+          display: flex;
+          justify-content: center;
           width: 100%;
         `}
       >

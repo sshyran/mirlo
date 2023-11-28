@@ -13,7 +13,7 @@ const Container = styled.div<{ artistBanner: boolean; userId?: number }>`
   margin-top: calc(12vh);
 
   ${(props) => (!props.artistBanner ? "margin-top: 0px;" : "")}
-  max-width: calc(1080px + 4rem);
+  max-width: var(--mi-container-big);
 
   @media screen and (max-width: ${bp.medium}px) {
     padding: var(--mi-side-paddings-xsmall);

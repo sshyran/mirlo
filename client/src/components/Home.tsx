@@ -55,6 +55,7 @@ function Home() {
           : css`
               min-height: calc(100vh - 350px);
               width: 100%;
+              max-width: var(--mi-container-big);
             `
       }
     >

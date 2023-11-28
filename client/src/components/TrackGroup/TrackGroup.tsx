@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import ArtistSupport from "components/Artist/ArtistSupport";
 import FullPageLoadingSpinner from "components/common/FullPageLoadingSpinner";
 import PublicTrackGroupListing from "components/common/PublicTrackGroupListing";
+import ArtistAlbums from "components/Artist/ArtistAlbums";
 import { MetaCard } from "components/common/MetaCard";
 import { useArtistContext } from "state/ArtistContext";
 import ImageWithPlaceholder from "components/common/ImageWithPlaceholder";
@@ -71,6 +72,8 @@ function TrackGroup() {
         }
         display: flex;
         align-items: center;
+        justify-content: center;
+        flex-direction: column;
         width: 100%;
 
         @media screen and (max-width: ${bp.small}px) {
@@ -84,8 +87,8 @@ function TrackGroup() {
       />
       <div
         className={css`
+          max-width: var(--mi-container-big);
           width: 100%;
-          align-items: center;
 
           td {
             padding: 0rem 0.4rem 0rem 0rem !important;
@@ -368,6 +371,50 @@ function TrackGroup() {
           </div>
         </div>
         {userStripeStatus?.chargesEnabled && <ArtistSupport artist={artist} />}
+      </div>
+      <div
+        className={css`
+          height: 270px;
+          background: rgba(0, 0, 0, 0.9);
+          color: var(--mi-white);
+          width: 100%;
+          position: fixed;
+          bottom: 65px;
+        `}
+      >
+        <div
+          className={css`
+            width: ;
+            > div {
+              h2 {
+                display: none;
+              }
+              margin-bottom: 0;
+              display: flex !important;
+              justify-content: flex-start;
+              flex-wrap: nowrap !important;
+              align-items: flex-start;
+            }
+            > div > div > div {
+              flex-wrap: nowrap !important;
+              > div {
+                margin: 0 1rem !important;}
+
+                > div {
+                  width: 200px !important;
+                }
+              }
+              
+              > div {
+              overflow-y: scroll;
+            }
+            }
+
+
+          `}
+        >
+          <ArtistAlbums artist={artist} />
+        </div>
       </div>
     </div>
   );

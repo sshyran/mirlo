@@ -19,7 +19,7 @@ export const Footer = () => {
         padding: 1rem;
         max-width: 640px;
         margin: 1rem auto 1rem;
-        z-index: 2;
+        z-index: 0;
         background: var(--mi-normal-background-color);
       `}
     >

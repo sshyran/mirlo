@@ -13,6 +13,7 @@ const ProfileContainer: React.FC = () => {
         className={css`
           z-index: 1;
           top: calc(48px + 3rem);
+          max-width: var(--mi-container-big);
           left: 0;
           overflow-x: hidden;
           padding: 0 !important;
