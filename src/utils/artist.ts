@@ -56,9 +56,19 @@ export const subscribeUserToArtist = async (
   artist: { subscriptionTiers: ArtistSubscriptionTier[]; id: number },
   user?: User | null
 ) => {
-  const defaultTier = artist.subscriptionTiers.find(
-    (tier) => tier.isDefaultTier
-  );
+  let defaultTier = artist.subscriptionTiers.find((tier) => tier.isDefaultTier);
+
+  if (!defaultTier) {
+    defaultTier = await prisma.artistSubscriptionTier.create({
+      data: {
+        name: "follow",
+        description: "follow an artist",
+        minAmount: 0,
+        isDefaultTier: true,
+        artistId: artist.id,
+      },
+    });
+  }
 
   if (user && defaultTier) {
     const isSubscribed = await prisma.artistUserSubscription.findFirst({
@@ -88,6 +98,17 @@ export const subscribeUserToArtist = async (
       });
     }
   }
+
+  const subscriptions = await prisma.artistUserSubscription.findMany({
+    where: {
+      userId: user?.id,
+      artistSubscriptionTier: {
+        artistId: artist.id,
+      },
+    },
+  });
+
+  return subscriptions;
 };
 
 export const deleteArtist = async (userId: number, artistId: number) => {
@@ -169,6 +190,9 @@ export const singleInclude: Prisma.ArtistInclude<DefaultArgs> = {
     where: {
       published: true,
       tracks: { some: { audio: { uploadState: "SUCCESS" } } },
+    },
+    orderBy: {
+      releaseDate: "desc",
     },
     include: {
       tracks: {

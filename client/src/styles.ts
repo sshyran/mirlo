@@ -23,8 +23,11 @@ const styles = `html {
   --mi-warning-background-color: var(--mi-warning-color);
   --mi-darken-warning-background-color: #df250b;
 
-  --mi-border-radius: 2px;
+  --mi-border-radius: 3px;
+  --mi-border-radius-x: 15px;
   --mi-border-radius-focus: 8px;
+
+  --mi-border-solid-narrow: solid 1px rgba(125, 125, 125, 0.5);
 
   --mi-icon-button-background-color: var(--mi-darken-x-background-color);
 
@@ -42,11 +45,9 @@ const styles = `html {
 
   --mi-container-full: 100%;
   --mi-container-big: 1080px;
-  --mi-container-small: 300px;
+  --mi-container-small: 700px;
 
 }
-
-
 
 @media (prefers-color-scheme: dark) {
   html {
@@ -88,7 +89,7 @@ body,
 
 h1 {
   font-size: 2.5rem;
-  line-height: 2em;
+  line-height: 3rem;
   font-weight: normal;
 
   a {
@@ -123,9 +124,10 @@ h6 {
   padding-bottom: .75rem;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   h1 {
     font-size: 2rem;
+    line-height: 2.5rem;
   }
 
   h2 {

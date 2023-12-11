@@ -17,9 +17,9 @@ import { imageQueue } from "./utils/processImages";
 import { audioQueue } from "./utils/processTrackAudio";
 import { serveStatic } from "./static";
 import prisma from "../prisma/prisma";
-import { MulterError } from "multer";
 import { rateLimit } from "express-rate-limit";
 import { corsCheck } from "./auth/cors";
+import errorHandler from "./utils/error";
 
 dotenv.config();
 
@@ -113,6 +113,7 @@ const routes = [
   "webhooks/stripe",
   "webhooks/stripe/connect",
   "jobs",
+  "admin/tasks",
 ];
 
 initialize({
@@ -128,14 +129,7 @@ initialize({
     path: "/v1/" + r,
     module: require(`./routers/v1/${r}`),
   })),
-  errorMiddleware: (err, req, res, next) => {
-    console.error("inside error middleware", err.status, err, err.status);
-    if (err instanceof MulterError) {
-      res.status(400).json({ error: err.message });
-    }
-    res.status(err.status ?? 500).json({ error: err.errors });
-    next();
-  },
+  errorMiddleware: errorHandler,
 });
 
 app.use(
@@ -152,8 +146,8 @@ if (!isDev) {
   // Set a rate limiter on all auth endpoints to be only 5 requests a minute
   const authLimiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
-    limit: 50, // Limit each IP to 100 requests per `window`
-    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    limit: 100, // Limit each IP to 100 requests per `window`
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers,
   });
 
   app.use("/auth", authLimiter, auth);

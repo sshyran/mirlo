@@ -4,11 +4,6 @@ import { Request, Response } from "express";
 import { userAuthenticated } from "../../../../auth/passport";
 import prisma from "../../../../../prisma/prisma";
 
-const { API_DOMAIN } = process.env;
-
-import stripe, {
-  createSubscriptionStripeProduct,
-} from "../../../../utils/stripe";
 import { subscribeUserToArtist } from "../../../../utils/artist";
 
 type Params = {
@@ -40,10 +35,10 @@ export default function () {
       });
 
       if (artist) {
-        await subscribeUserToArtist(artist, user);
+        const results = await subscribeUserToArtist(artist, user);
 
         res.status(200).json({
-          message: "success",
+          results,
         });
       } else {
         res.status(404).json({

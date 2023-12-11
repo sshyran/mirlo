@@ -11,6 +11,7 @@ export const clearTables = async () => {
   await prisma.$executeRaw`DELETE FROM "Track";`;
   await prisma.$executeRaw`DELETE FROM "UserTrackGroupWishlist";`;
   await prisma.$executeRaw`DELETE FROM "UserTrackGroupPurchase";`;
+  await prisma.$executeRaw`DELETE FROM "TrackGroupCover";`;
   await prisma.$executeRaw`DELETE FROM "TrackGroup";`;
   await prisma.$executeRaw`DELETE FROM "Artist";`;
   await prisma.$executeRaw`DELETE FROM "User";`;
@@ -39,6 +40,24 @@ export const createArtist = async (
       urlSlug: data?.urlSlug ?? "test-artist",
       userId: userId,
       enabled: data?.enabled ?? true,
+      subscriptionTiers: data?.subscriptionTiers,
+    },
+    include: {
+      subscriptionTiers: true,
+    },
+  });
+  return artist;
+};
+
+export const createPost = async (
+  artistId: number,
+  data?: Partial<Prisma.PostCreateArgs["data"]>
+) => {
+  const artist = await prisma.post.create({
+    data: {
+      title: data?.title ?? "Test title",
+      artistId: artistId,
+      content: data?.content ?? "The content",
     },
   });
   return artist;
@@ -55,6 +74,7 @@ export const createTrackGroup = async (
       urlSlug: data?.urlSlug ?? "test-artist",
       artistId: artistId,
       published: data?.published ?? true,
+      releaseDate: data?.releaseDate,
       tracks: {
         create: data?.tracks ?? [
           {

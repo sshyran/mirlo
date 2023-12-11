@@ -135,6 +135,7 @@ const ArtistHeaderSection: React.FC<{ artist: Artist; isManage?: boolean }> = ({
                 <HeaderDiv
                   className={css`
                     padding-bottom: 0 !important;
+                    margin-bottom: 0rem !important;
                     @media screen and (max-width: ${bp.medium}px) {
                       margin: 0rem !important;
                     }
@@ -146,6 +147,7 @@ const ArtistHeaderSection: React.FC<{ artist: Artist; isManage?: boolean }> = ({
                       display: flex;
                       align-items: center;
                       justify-content: space-between;
+                      word-break: break-word;
                       width: 100%;
                       @media screen and (max-width: ${bp.medium}px) {
                         min-height: auto;
