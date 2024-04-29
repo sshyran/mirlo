@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../prisma/prisma";
 import { userLoggedInWithoutRedirect } from "../../../auth/passport";
-import { User } from "@mirlo/prisma/client";
+import { User } from "@prisma/client";
 import postProcessor, { processSinglePost } from "../../../utils/post";
 import { checkIsUserSubscriber } from "../../../utils/artist";
 import { AppError } from "../../../utils/error";

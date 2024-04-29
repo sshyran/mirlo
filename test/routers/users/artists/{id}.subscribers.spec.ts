@@ -9,7 +9,7 @@ import {
   createTier,
   createUser,
 } from "../../../utils";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../prisma/prisma";
 
 import { requestApp } from "../../utils";
 

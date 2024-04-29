@@ -1,5 +1,5 @@
 import { finalCoversBucket, incomingCoversBucket } from "./minio";
-import prisma from "@mirlo/prisma";
+import prisma from "../../prisma/prisma";
 import { APIContext } from "./file";
 import { sendToImageQueue } from "./processImages";
 

@@ -9,7 +9,7 @@ import {
   createTrackGroup,
   createUser,
 } from "../../utils";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../prisma/prisma";
 import { faker } from "@faker-js/faker";
 
 const baseURL = `${process.env.API_DOMAIN}/v1/`;

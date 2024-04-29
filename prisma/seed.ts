@@ -1,4 +1,4 @@
-import { PrismaClient, Prisma } from "./__generated__";
+import { PrismaClient, Prisma } from "@prisma/client";
 import { users } from "./seeds/users";
 import { hashPassword } from "../src/routers/auth";
 import { clients } from "./seeds/clients";

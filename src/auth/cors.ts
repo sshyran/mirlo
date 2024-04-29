@@ -1,5 +1,5 @@
 import { flatten } from "lodash";
-import prisma from "@mirlo/prisma";
+import prisma from "../../prisma/prisma";
 import cors from "cors";
 import { NextFunction, Request, Response } from "express";
 

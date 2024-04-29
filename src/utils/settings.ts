@@ -1,4 +1,4 @@
-import prisma from "@mirlo/prisma";
+import prisma from "../../prisma/prisma";
 
 type SettingsType = {
   platformPercent: number;

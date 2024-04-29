@@ -1,11 +1,11 @@
-import { User } from "@mirlo/prisma/client";
+import { User } from "@prisma/client";
 import { NextFunction, Request, Response } from "express";
 
 import {
   userAuthenticated,
   userLoggedInWithoutRedirect,
 } from "../../../../auth/passport";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../../prisma/prisma";
 
 const { API_DOMAIN } = process.env;
 

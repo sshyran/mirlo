@@ -3,7 +3,7 @@ import {
   userAuthenticated,
   userHasPermission,
 } from "../../../../../auth/passport";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../../../prisma/prisma";
 import { doesTrackGroupBelongToUser } from "../../../../../utils/ownership";
 
 export default function () {

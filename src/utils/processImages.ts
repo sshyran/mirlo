@@ -15,7 +15,7 @@ import {
   incomingCoversBucket,
   minioClient,
 } from "./minio";
-import prisma from "@mirlo/prisma";
+import prisma from "../../prisma/prisma";
 import {
   APIContext,
   APIFile,

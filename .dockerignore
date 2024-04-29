@@ -2,7 +2,4 @@
 .gitignore
 node_modules
 npm-debug.log
-data
-dist
-__generated__
-.yarn
+test

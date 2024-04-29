@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { userAuthenticated, userHasPermission } from "../../../auth/passport";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../prisma/prisma";
 import cleanUpFiles from "../../../jobs/tasks/clean-up-files";
 import initiateUserNotifcations from "../../../jobs/tasks/initiate-user-notifications";
 

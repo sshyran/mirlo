@@ -1,5 +1,5 @@
 import assert from "node:assert";
-import { Prisma } from "@mirlo/prisma/client";
+import { Prisma } from "@prisma/client";
 
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -11,7 +11,7 @@ import {
   createTrackGroup,
   createUser,
 } from "../../../utils";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../prisma/prisma";
 
 const baseURL = `${process.env.API_DOMAIN}/v1/`;
 const requestApp = request(baseURL);

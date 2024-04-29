@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { userAuthenticated, userHasPermission } from "../../../auth/passport";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../prisma/prisma";
 
 export default function () {
   const operations = {

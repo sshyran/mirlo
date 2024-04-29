@@ -4,13 +4,7 @@
     "outDir": "dist",
     "strict": true,
     "lib": ["esnext"],
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node16",
-    "isolatedModules": true
+    "esModuleInterop": true
   },
-  "exclude": ["client"],
-  "ts-node": {
-    "transpileOnly": true
-  }
+  "exclude": ["client"]
 }

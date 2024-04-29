@@ -1,11 +1,11 @@
-import { Prisma, User } from "@mirlo/prisma/client";
+import { Prisma, User } from "@prisma/client";
 import { NextFunction, Request, Response } from "express";
 import {
   contentBelongsToLoggedInUserArtist,
   userAuthenticated,
 } from "../../../../../auth/passport";
 import processor from "../../../../../utils/trackGroup";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../../../prisma/prisma";
 import slugify from "slugify";
 import { getSiteSettings } from "../../../../../utils/settings";
 
@@ -111,12 +111,6 @@ export default function () {
       urlSlug,
     } = req.body;
     const user = req.user as User;
-
-    if (!urlSlug) {
-      return res.status(400).json({
-        error: "Argument `urlSlug` is missing.",
-      });
-    }
 
     try {
       const userForCurrency = await prisma.user.findFirst({

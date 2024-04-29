@@ -1,4 +1,4 @@
-import prisma from "@mirlo/prisma";
+import prisma from "../../prisma/prisma";
 import { finalAudioBucket, removeObjectsFromBucket } from "../utils/minio";
 import ffmpeg from "fluent-ffmpeg";
 import logger from "../logger";

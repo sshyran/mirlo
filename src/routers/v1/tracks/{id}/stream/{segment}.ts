@@ -1,7 +1,7 @@
-import { User } from "@mirlo/prisma/client";
+import { User } from "@prisma/client";
 import { NextFunction, Request, Response } from "express";
 
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../../../prisma/prisma";
 import {
   finalAudioBucket,
   getBufferFromMinio,

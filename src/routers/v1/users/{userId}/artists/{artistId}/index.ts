@@ -3,7 +3,7 @@ import {
   artistBelongsToLoggedInUser,
   userAuthenticated,
 } from "../../../../../../auth/passport";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../../../../prisma/prisma";
 
 import {
   deleteArtist,

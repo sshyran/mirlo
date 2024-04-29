@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { userAuthenticated } from "../../../auth/passport";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../prisma/prisma";
 
 type Query = {
   urlSlug?: string;

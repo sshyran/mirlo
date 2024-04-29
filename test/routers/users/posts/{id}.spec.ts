@@ -1,5 +1,5 @@
 import assert from "node:assert";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../prisma/prisma";
 
 import * as dotenv from "dotenv";
 dotenv.config();

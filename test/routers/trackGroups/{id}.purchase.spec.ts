@@ -10,7 +10,7 @@ import {
 } from "../../utils";
 
 import { requestApp } from "../utils";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../prisma/prisma";
 
 describe("trackGroups/{id}/purchase", () => {
   beforeEach(async () => {

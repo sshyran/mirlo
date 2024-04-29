@@ -2,7 +2,7 @@ import assert from "node:assert";
 import * as dotenv from "dotenv";
 dotenv.config();
 import { describe, it } from "mocha";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../prisma/prisma";
 import { clearTables } from "../../utils";
 
 import { requestApp } from "../utils";

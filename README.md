@@ -11,24 +11,13 @@ Main libraries:
 
 ### Download and install
 
-Prerequisites:
-- [Docker](https://www.docker.com/get-started/)
-- [Node.js 18](https://nodejs.org/en)
-- [Yarn 4](https://yarnpkg.com)
-
-Once node is installed, you can use [Corepack](https://nodejs.org/api/corepack.html) to automatically install the correct version of yarn (as defined in `package.json`):
-
-```sh
-corepack enable
-```
-
 #### For the API:
 
 ```sh
-git clone https://github.com/funmusicplace/mirlo
+git clone <repository>
 cd mirlo
 cp .env.example .env
-docker compose watch
+docker-compose up # (or depending on your version of docker "docker compose up"--notice the space)
 ```
 
 Go to `localhost:3000/docs` and see the Swagger API docs.
@@ -36,14 +25,16 @@ Go to `localhost:3000/docs` and see the Swagger API docs.
 This should run the **seeding** script by default. If it doesn't do so, you can add run the seed by running:
 
 ```sh
-docker exec -it blackbird-api yarn prisma:seed
+docker exec -it blackbird-api npx prisma db seed
 ```
 
 #### For the client:
 
 ```sh
-yarn install
-yarn client:start
+cd client
+cp .env.example .env
+yarn
+yarn start
 ```
 
 ## Email
@@ -57,7 +48,7 @@ On production email gets sent by sendgrid. During local development emails appea
 Changes in background jobs aren't detected. You'll need to restart the docker container for them:
 
 ```sh
-docker compose up -d --force-recreate --no-deps background
+docker-compose up -d --force-recreate --no-deps background
 ```
 
 ## Workers (Uploading Music, Images, Etc)
@@ -65,7 +56,7 @@ docker compose up -d --force-recreate --no-deps background
 If you want to upload music or upload images, you'll need a worker running.
 
 ```sh
-docker exec -it blackbird-api yarn ts-node src/jobs/queue-worker.ts run
+docker exec -it blackbird-api node src/jobs/queue-worker.js run
 ```
 
 > NOTE: this is done automatically by the `blackbird-background` container in docker.
@@ -77,13 +68,13 @@ docker exec -it blackbird-api yarn ts-node src/jobs/queue-worker.ts run
 Migrations will run automatically on `docker-compose up`. To make changes to the database, change the schema.prisma file and then run:
 
 ```sh
-docker exec -it blackbird-api yarn prisma:migrate
+docker exec -it blackbird-api npx prisma migrate dev
 ```
 
 If your typescript for prisma is ever out of date, you can re-generate it with:
 
 ```sh
-yarn prisma:build
+docker exec -it blackbird-api npx prisma generate
 ```
 
 ## Stripe

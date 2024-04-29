@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient } from "./__generated__";
+import { Prisma, PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient({
   // The following controls logging of the database

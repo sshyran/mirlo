@@ -1,11 +1,11 @@
-import { User } from "@mirlo/prisma/client";
+import { User } from "@prisma/client";
 import { NextFunction, Request, Response } from "express";
 import {
   userAuthenticated,
   userHasPermission,
 } from "../../../../../../auth/passport";
 import { doesTrackGroupBelongToUser } from "../../../../../../utils/ownership";
-import prisma from "@mirlo/prisma";
+import prisma from "../../../../../../../prisma/prisma";
 import { randomBytes } from "crypto";
 import { range } from "lodash";
 

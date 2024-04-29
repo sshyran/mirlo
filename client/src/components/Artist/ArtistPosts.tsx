@@ -45,7 +45,7 @@ const ArtistPosts: React.FC = () => {
         <div></div>
         <a
           target="_blank"
-          href={`${import.meta.env.VITE_API_DOMAIN}/v1/artists/${artist.id}/feed?format=rss`}
+          href={`${process.env.REACT_APP_API_DOMAIN}/v1/artists/${artist.id}/feed?format=rss`}
           rel="noreferrer"
         >
           <Button onlyIcon startIcon={<FaRss />} />

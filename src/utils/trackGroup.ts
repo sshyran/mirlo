@@ -5,8 +5,8 @@ import {
   TrackGroupCover,
   Prisma,
   TrackGroupTag,
-} from "@mirlo/prisma/client";
-import prisma from "@mirlo/prisma";
+} from "@prisma/client";
+import prisma from "../../prisma/prisma";
 import { generateFullStaticImageUrl } from "./images";
 import {
   finalCoversBucket,

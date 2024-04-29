@@ -1,4 +1,4 @@
-import prisma from "@mirlo/prisma";
+import prisma from "../../prisma/prisma";
 import logger from "../logger";
 import { faker } from "@faker-js/faker";
 import { hashPassword } from "../routers/auth";
