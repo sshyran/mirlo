@@ -1,8 +1,14 @@
 FROM node:18-bookworm-slim AS base
 
 # Install ffmpeg
+RUN echo "deb http://ftp.us.debian.org/debian bookworm main non-free" > /etc/apt/sources.list.d/non-free.list
+# RUN add-apt-repository multiverse
 RUN apt-get update -qq
+RUN apt-get install -qq --no-install-recommends libx264-dev
+RUN apt-get install -qq --no-install-recommends libopus-dev
+RUN apt-get install -qq --no-install-recommends libfdk-aac-dev
 RUN apt-get install -qq --no-install-recommends ffmpeg=7:5.1.4-0+deb12u1 >/dev/null
+RUN ./configure --prefix=/opt/ffmpeg-5.1.4 --enable-gpl --enable-nonfree --enable-version3 --enable-libx264 --enable-libfdk-aac --enable-pthreads --enable-postproc --enable-gnutls --disable-librtmp --disable-libopencv --disable-libopenjpeg --enable-libpulse --arch=amd64 --disable-shared --enable-static --disable-doc --extra-cflags=--static --extra-libs="-ldl" --disable-outdev=alsa --disable-outdev=oss --disable-outdev=v4l2 --disable-outdev=sndio --disable-indev=alsa --disable-indev=oss --disable-indev=sndio --disable-indev=jack
 
 # Create app directory
 ENV NODE_APP_DIR=/var/www/api/src \

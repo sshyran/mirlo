@@ -15,6 +15,8 @@ import ArtistColorsWrapper from "components/ArtistColorsWrapper";
 import CookieDisclaimer from "components/CookieDisclaimer";
 import { useAuthContext } from "state/AuthContext";
 
+window.global ||= window;
+
 injectGlobal(globalCSS);
 
 function App() {
